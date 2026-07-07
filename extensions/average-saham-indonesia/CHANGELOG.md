@@ -1,6 +1,6 @@
 # Average Saham Indonesia Changelog
 
-## [Added Average Saham Indonesia] - 2026-07-07
+## [Initial Release] - {PR_MERGE_DATE}
 
 - Calculate new average stock price (Average Up / Average Down) instantly as you type
 - Indonesian-first form fields: Harga Lama, Lot Lama, Harga Baru, Lot Baru
