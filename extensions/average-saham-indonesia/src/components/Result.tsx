@@ -21,6 +21,7 @@ export function Result({ result, message }: ResultProps) {
         <>
           <Form.Description title="Total Lot" text={formatLot(result.totalLot)} />
           <Form.Description title="Total Modal" text={formatCurrency(result.totalInvestment)} />
+          <Form.Description title="New Investment Needed" text={formatCurrency(result.newInvestmentNeeded)} />
           <Form.Description title="⭐ Average Price" text={formatPrice(result.averagePrice)} />
         </>
       ) : (

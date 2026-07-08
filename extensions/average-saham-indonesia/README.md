@@ -66,7 +66,7 @@ Result:
 ```
 Total Lot      25
 Total Modal    Rp240.455
-Average Price  Rp96.18
+Average Price  Rp96,18
 ```
 
 ## Formula

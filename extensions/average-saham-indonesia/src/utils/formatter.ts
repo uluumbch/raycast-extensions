@@ -15,26 +15,18 @@ export function formatCurrency(value: number): string {
 }
 
 /**
- * Formats a share price as Rupiah with up to 2 decimal places.
- *
- * Note: thousands are grouped with "." (Indonesian style), and the decimal
- * point is intentionally also kept as "." (instead of the locale's ",") to
- * match how the price should read, e.g. "Rp96.18".
- * Examples: 96.18 -> "Rp96.18", 100 -> "Rp100"
+ * Formats a share price as Rupiah with up to 2 decimal places, using proper
+ * Indonesian number formatting: "." groups thousands and "," separates the
+ * decimal part, so the two never collide (e.g. "Rp9.250,25", not the
+ * ambiguous "Rp9.250.25").
+ * Examples: 96.18 -> "Rp96,18", 100 -> "Rp100", 9250.25 -> "Rp9.250,25"
  */
+const formatPriceNumber = new Intl.NumberFormat("id-ID", {
+  maximumFractionDigits: 2,
+}).format;
+
 export function formatPrice(value: number): string {
-  const rounded = Math.round(value * 100) / 100;
-  const integerPart = groupThousands(Math.trunc(rounded));
-
-  if (Number.isInteger(rounded)) {
-    return `Rp${integerPart}`;
-  }
-
-  const decimalPart = Math.round(Math.abs(rounded - Math.trunc(rounded)) * 100)
-    .toString()
-    .padStart(2, "0");
-
-  return `Rp${integerPart}.${decimalPart}`;
+  return `Rp${formatPriceNumber(value)}`;
 }
 
 /**

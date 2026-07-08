@@ -36,6 +36,11 @@ export function calculateInvestment(price: number, shares: number): number {
  *
  * Average Price = Total Investment / Total Shares
  * ```
+ *
+ * Note: `newInvestment` (the cash needed for the new purchase) is already
+ * part of `totalInvestment`, so it must NOT be added again when computing
+ * `averagePrice`. It's returned separately as `newInvestmentNeeded` purely
+ * so the UI can show "how much money to prepare for this purchase".
  */
 export function calculateAverage({ oldPrice, oldLot, newPrice, newLot }: AverageInput): AverageResult {
   const oldShares = calculateShares(oldLot);
@@ -52,6 +57,7 @@ export function calculateAverage({ oldPrice, oldLot, newPrice, newLot }: Average
     totalLot: oldLot + newLot,
     totalShares,
     totalInvestment,
+    newInvestmentNeeded: newInvestment,
     averagePrice,
   };
 }

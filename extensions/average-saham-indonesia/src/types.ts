@@ -21,6 +21,8 @@ export interface AverageResult {
   totalInvestment: number;
   /** Total investment divided by total shares. */
   averagePrice: number;
+  /** Cash needed for the new purchase alone (new price × new shares). */
+  newInvestmentNeeded: number;
 }
 
 /**
